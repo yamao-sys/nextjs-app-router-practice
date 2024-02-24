@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: next-app
+    container_name: next-app
+    command: sh -c "npm run dev"
+    ports:
+      - '3001:3000'
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app
+    restart: always
+    tty: true
+    stdin_open: true
